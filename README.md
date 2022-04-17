@@ -9,3 +9,7 @@ Hughes     |Vanessa     |vjhughes   |vanessajhughes   |vjhughes@colostate.edu
 # Checkpoint2 Youtube video
 
 https://youtu.be/NHR4pPo3KfI
+
+# This is how you play the game/download it
+
+https://play.unity.com/mg/other/webgl-builds-181243
