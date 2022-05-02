@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager:MonoBehaviour
 {
     public int columns = 8;
     public int rows = 8;
@@ -17,7 +18,8 @@ public class BoardManager : MonoBehaviour
     private Transform boardHolder;
     private List<Vector3> gridPositions = new List<Vector3>();
 
-    void InitialiseList(){
+    void InitialiseList()
+    {
         gridPositions.Clear();
         for(int x =1; x< columns - 1; x++){
             for (int y = 1; y < rows - 1; y++){
@@ -41,24 +43,10 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    void LayoutWalls(GameObject[] wallArray, GameObject[] foodArray){
-        GameObject wallChoice = wallArray[Random.Range (0, wallArray.Length)];
-        GameObject foodChoice = foodArray[Random.Range (0, foodArray.Length)];
-        for(int i = 1; i < 7; i++){
-            Instantiate(wallChoice, new Vector3(columns-2, rows - i, 0f), Quaternion.identity);
-            Instantiate(wallChoice, new Vector3((columns -2) -i, rows - 6, 0f), Quaternion.identity);
-        }
-        for(int i = 2; i < 8; i++){
-            Instantiate(foodChoice, new Vector3(columns - 1, rows - i, 0f),Quaternion.identity);
-            Instantiate(foodChoice, new Vector3(columns - i, rows - 7, 0f), Quaternion.identity);
-        }
-        
-    }
     
-    public void SetupScene(){
+    public void SetupScene()
+    {
         BoardSetup();
         InitialiseList();
-        LayoutWalls(wallTiles, foodTiles);
-        Instantiate(exit, new Vector3(columns -1, rows -1, 0f), Quaternion.identity);
     }
 }

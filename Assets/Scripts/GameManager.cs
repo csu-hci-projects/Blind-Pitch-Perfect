@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
     public BoardManager boardScript;
+    public static bool stage1 = false;
+    public static bool stage2 = false;
+    public static bool stage3 = false;
+    public static bool stage4 = false;
+    public static bool stage5 = false;
+    public static bool stage6 = false;
 
     void Awake(){
         if (instance == null){
@@ -16,23 +22,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        boardScript = GetComponent<BoardManager>();
+       boardScript = GetComponent<BoardManager>();
         InitGame();
     }
 
     void InitGame()
     {
-        boardScript.SetupScene();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+      boardScript.SetupScene();
     }
 }

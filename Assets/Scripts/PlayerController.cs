@@ -20,13 +20,23 @@ public class PlayerController : MonoBehaviour{
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        AudioSource source = new AudioSource();
-        source.clip = moveSound;
-        source.Play(); 
+
+ 
     }
 
     private void FixedUpdate()
     {  
+        //body.AddForce(new Vector2(horizontal * speed, vertical * speed));
+
+        
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
+        if(body.velocity != Vector2.zero){
+            GetComponent<AudioSource> ().playOnAwake = false;
+            GetComponent<AudioSource> ().clip = moveSound;
+            if(!GetComponent<AudioSource> ().isPlaying){
+                GetComponent<AudioSource> ().Play();
+            }
+            
+        }
     }
 }
